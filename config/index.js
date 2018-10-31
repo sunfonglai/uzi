@@ -11,20 +11,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      /*'/pfUrl': {
+      '/pfUrl': {
         target: 'http://localhost:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/pfUrl': '/pf'
         }
-      },*/
-      '/dcUrl': {
-        target: 'http://localhost:8110',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/dcUrl': ''
-        }
-      }
+      },
+      // '/dcUrl': {
+      //   target: 'http://localhost:8110',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/dcUrl': ''
+      //   }
+      // }
     },
 
     // Various Dev Server settings
@@ -67,20 +67,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: './',
     proxyTable: {
-      /*'/pfUrl': {
-        target: 'http://localhost:8080',
+      '/': {
+        target: 'http://localhost:8000',
         changeOrigin: true,
         pathRewrite: {
           '^/pfUrl': '/pf'
         }
-      },*/
-      '/dcUrl': {
-        target: 'http://localhost:8110',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/dcUrl': ''
-        }
-      }
+      },
+      // '/dcUrl': {
+      //   target: 'http://localhost:8110',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/dcUrl': ''
+      //   }
+      // }
     },
     /**
      * Source Maps

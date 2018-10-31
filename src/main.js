@@ -22,7 +22,10 @@ Vue.prototype.$ajax = axios
 // Mock.bootstrap()
 
 Vue.config.productionTip = false
-axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:8110' : 'http://localhost:8110'
+
+// 设置请求头 跨域
+axios.defaults.headers.post['Content-type'] = 'application/json'
+axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : ''
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -31,43 +31,7 @@
       <!--左侧一级菜单-->
       <el-aside  id="navbar" width="220px">
         <el-container>
-          <el-main>
-            <el-menu  class="el-menu-vertical-demo"
-                     background-color="#545c64"
-                     text-color="#fff"
-                     active-text-color="#ffd04b">
-              <el-submenu index="1">
-                <template slot="title">
-                  <i class="el-icon-location"></i>
-                  <span slot="title">导航一</span>
-                </template>
-                <el-menu-item-group>
-                  <span slot="title">分组一</span>
-                  <el-menu-item index="1-1">选项1</el-menu-item>
-                  <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                  <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                  <span slot="title">选项4</span>
-                  <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-              </el-submenu>
-              <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-              </el-menu-item>
-              <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-              </el-menu-item>
-              <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-              </el-menu-item>
-            </el-menu>
-          </el-main>
+          <component :is="leftMenu"></component>
         </el-container>
       </el-aside>
       <!--右方主菜单-->
@@ -97,12 +61,13 @@
 
 import axios from 'axios'
 import syncPlan from '../syncData/syncPlan'
+import leftMenu from './leftMenu'
 
 // import $ from 'home.js'
 
 export default {
   name: 'homePage',
-  components: {syncPlan},
+  components: {syncPlan, leftMenu},
   beforeMount: function () {
     console.log('beforeMount  getMenuList begin ')
     this.getMenuList()
@@ -127,7 +92,8 @@ export default {
     return {
       menuList: '',
       menusHtml: '',
-      currMainComp: 'syncPlan'
+      currMainComp: 'syncPlan',
+      leftMenu: 'leftMenu'
     }
   },
   methods: {
@@ -157,41 +123,6 @@ export default {
           console.log(error)
         })
       console.log('  getMenuList end ')
-    },
-    buildNavBar () {
-      var menuList = this.menuList //
-      var menuHtmlStr = ''
-      var menuListTemp = []
-      var level1 = 0
-      var level2 = 0
-      var level3 = 0
-      var level3Html = ''
-      for (let i = 0; i < menuList.length; i++) {
-        if (menuList[i].menuLevel === 1 && menuListTemp.length === 0) {
-          // 初始化
-          level3Html = ''
-          level1++
-          menuListTemp.push(menuList[i])
-        }
-        if (menuList[i].menuLevel === 1 && menuListTemp.length !== 0) {
-        // 将上一个循环的末端标签组装
-          for (let j = menuListTemp.length - 1; j >= 0; j--) {
-          //  先组装二级菜单
-            var level2Html = '<el-submenu index="' + level1 + '-' + level2 + '"><template slot="title">选项4</template>' + level3Html + '</el-submenu>'
-          }
-        }
-        if (menuList[i].menuLevel === 2) {
-          level2++
-          menuListTemp.push(menuList[i])
-        }
-        if (menuList[i].menuLevel === 3) {
-          level3++
-          level3Html = level3Html + '<el-menu-item index="' + level1 + '-' + level2 + '-' + level3 + '">' + menuList[i].menuName + '</el-menu-item>'
-        }
-      }
-      this.menusHtml = menuHtmlStr
-      this.menusHtml = level3Html
-      console.log(level3Html)
     }
   }
 }

@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/pages/pf/login/login.vue'
-import Home from '@/views/pages/pf/home/home.vue'
-import Test from '@/views/pages/pf/test/test.vue'
-import SyncPlan from '@/views/pages/pf/syncData/syncPlan.vue'
-import SyncPlanDetail from '@/views/pages/pf/syncData/syncPlanDetail.vue'
+import Login from '@/views/pages/plf/login/login.vue'
+import Home from '@/views/pages/plf/home/home.vue'
+import LeftMenu from '@/views/pages/plf/home/leftMenu.vue'
+import Test from '@/views/pages/plf/test/test.vue'
+import SyncPlan from '@/views/pages/plf/syncData/syncPlan.vue'
+// import SyncPlanDetail from '@/views/pages/pf/syncData/syncPlanDetail.vue'
 
 Vue.use(Router)
 
@@ -12,29 +13,29 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/page/',
       name: 'Login',
       component: Login
     },
     {
-      path: '/Home',
+      path: '/page/Home',
       name: 'Home',
       component: Home
     },
     {
-      path: '/Test',
+      path: '/page/Test',
       name: 'Test',
       component: Test
     },
     {
-      path: '/SyncPlan',
+      path: '/page/SyncPlan',
       name: 'SyncPlan',
       component: SyncPlan
     },
     {
-      path: '/SyncPlanDetail',
-      name: 'SyncPlanDetail',
-      component: SyncPlanDetail
+      path: '/page/LeftMenu',
+      name: 'LeftMenu',
+      component: LeftMenu
     }
   ]
 })
