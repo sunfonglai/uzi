@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/pfUrl': {
-        target: 'http://localhost:8080',
+      '/data': {
+        target: 'http://localhost:8050',
         changeOrigin: true,
         pathRewrite: {
-          '^/pfUrl': '/pf'
+          '^/data': '/data'
         }
       },
       // '/dcUrl': {
@@ -28,7 +28,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8090, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
